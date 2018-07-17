@@ -9,8 +9,8 @@
     ],
     "require": {
         "php": "7.0.2|7.0.4|~7.0.6|~7.1.0",
-        "magento/framework": "100.1.*",
-        "magento/module-catalog": "101.0.*"
+        "magento/framework": "101.0.*",
+        "magento/module-catalog": "102.0.*"
     },
     "require-dev": {
         "phpunit/phpunit": "~6.2.0",
