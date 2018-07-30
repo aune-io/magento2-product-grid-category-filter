@@ -28,6 +28,15 @@ $ bin/magento setup:upgrade
 3. Login to the admin
 4. Go to Catalog > Catalog > Products, the category column and filter will be available
 
+## Anchor categories
+If you wish to view and/or filter by anchor categories, you can enable them via
+_Store > Configuration > Catalog > Product Grid Category Filter_.
+For flexibility purposes, anchor support can be enabled separately for filter and view.
+
+In case you enable one of those options, the _Categories Products_ index needs to be up to date.
+By default the index of store 1 is used, but this configuration can be changed from
+the same section in case you don't have a store with id 1 or its information are not the ones you need to see.
+
 ## Authors, contributors and maintainers
 
 Author:

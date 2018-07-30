@@ -5,6 +5,7 @@ namespace Aune\ProductGridCategoryFilter\Observer;
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
+use Aune\ProductGridCategoryFilter\Helper\Data as HelperData;
 
 class ProductCollectionLoadAfter implements ObserverInterface
 {
@@ -13,20 +14,28 @@ class ProductCollectionLoadAfter implements ObserverInterface
     /**
      * @var ResourceConnection
      */
-    protected $resource;
+    private $resource;
 
     /**
      * @var \Magento\Framework\DB\Adapter\Pdo\Mysql
      */
-    protected $connection;
-
+    private $connection;
+    
+    /**
+     * @var HelperData
+     */
+    private $helperData;
+    
     /**
      * @param ResourceConnection $resource
+     * @param HelperData $helperData
      */
     public function __construct(
-        ResourceConnection $resource
+        ResourceConnection $resource,
+        HelperData $helperData
     ) {
         $this->resource = $resource;
+        $this->helperData = $helperData;
 
         $this->connection = $this->resource->getConnection(
             ResourceConnection::DEFAULT_CONNECTION
@@ -54,10 +63,13 @@ class ProductCollectionLoadAfter implements ObserverInterface
         }
 
         // Get product/category associations for loaded products
+        $tableName = $this->resource->getTableName(
+            $this->helperData->getCategoryProductTableName(HelperData::ACTION_SHOW)
+        );
         $select = $this->connection->select()
-            ->from($this->resource->getTableName('catalog_category_product'))
+            ->from($tableName)
             ->where('product_id IN (?)', array_keys($categories));
-
+        
         $data = $this->connection->fetchAll($select);
 
         $categories = [];

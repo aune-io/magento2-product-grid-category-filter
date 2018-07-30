@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="catalog">
+            <group id="aune_productgridcategoryfilter" translate="label comment" type="text" sortOrder="1000" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Product Grid Category Filter</label>
+                <field id="anchor_show" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>Show anchor categories</label>
+                    <comment>By default only direct category assignations are displayed in the grid column. Enable this option to see all anchor associations, too.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="anchor_filter" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>Filter by anchor categories</label>
+                    <comment>By default, when applied, the grid filter only shows product that are directly associated with the selected category. Enable this option to see filter by anchor associations, too.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="store_id" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>Reference Store</label>
+                    <comment>The category product index is built by store, so it is necessary to specify a reference store for the query.</comment>
+                    <source_model>Magento\Store\Model\System\Store</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
