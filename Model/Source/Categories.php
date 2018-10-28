@@ -26,6 +26,7 @@ class Categories implements ArrayInterface
      */
     public function toOptionArray()
     {
+        $options = [];
         $categoryFullNames = $this->categoriesHelper->getCategoryFullNames();
         
         foreach ($categoryFullNames as $value => $label) {
