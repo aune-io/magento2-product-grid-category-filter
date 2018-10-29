@@ -44,7 +44,7 @@ class Categories
         if (is_null($this->categoriesById)) {
             $collection = $this->categoryCollectionFactory->create()
                 ->addAttributeToSelect('name')
-                ->addAttributeToFilter('level', ['gt' => 100])
+                ->addAttributeToFilter('level', ['gt' => 1])
                 ->addAttributeToFilter('is_active', ['gt' => 0]);
 
             $this->categoriesById = [];
