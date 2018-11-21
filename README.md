@@ -42,5 +42,8 @@ the same section in case you don't have a store with id 1 or its information are
 Author:
 - [Renato Cason](https://github.com/renatocason)
 
+Contributors:
+- [xpedicion](https://github.com/xpedicion)
+
 ## License
 Licensed under the Open Software License version 3.0
