@@ -48,16 +48,26 @@ class AddCategoryFilterToCollection implements AddFilterToCollectionInterface
         if (empty($condition['eq'])) {
             return;
         }
-        
-        $tableName = $this->resource->getTableName(
-            $this->helperData->getCategoryProductTableName(HelperData::ACTION_FILTER)
-        );
-        $select = $this->connection->select()
-            ->from($tableName, ['product_id'])
-            ->where('category_id = ?', $condition['eq']);
-        
-        $data = $this->connection->fetchAll($select);
-        $productIds = array_column($data, 'product_id');
+
+        if (intval($condition['eq']) === -1) {
+            // Filter products without a category
+            $select = $this->connection->select()
+                ->from('catalog_product_entity', ['entity_id'])
+                ->where('entity_id not in (select product_id from catalog_category_product)');
+
+            $data = $this->connection->fetchAll($select);
+            $productIds = array_column($data, 'entity_id');
+        } else {
+            $tableName = $this->resource->getTableName(
+                $this->helperData->getCategoryProductTableName(HelperData::ACTION_FILTER)
+            );
+            $select = $this->connection->select()
+                ->from($tableName, ['product_id'])
+                ->where('category_id = ?', $condition['eq']);
+
+            $data = $this->connection->fetchAll($select);
+            $productIds = array_column($data, 'product_id');
+        }
         
         $collection->getSelect()->where('e.entity_id IN (?)', $productIds);
     }
