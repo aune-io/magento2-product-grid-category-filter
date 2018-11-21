@@ -49,26 +49,39 @@ class AddCategoryFilterToCollection implements AddFilterToCollectionInterface
             return;
         }
 
-        if (intval($condition['eq']) === -1) {
-            // Filter products without a category
-            $select = $this->connection->select()
-                ->from('catalog_product_entity', ['entity_id'])
-                ->where('entity_id not in (select product_id from catalog_category_product)');
-
-            $data = $this->connection->fetchAll($select);
-            $productIds = array_column($data, 'entity_id');
-        } else {
-            $tableName = $this->resource->getTableName(
-                $this->helperData->getCategoryProductTableName(HelperData::ACTION_FILTER)
-            );
-            $select = $this->connection->select()
-                ->from($tableName, ['product_id'])
-                ->where('category_id = ?', $condition['eq']);
-
-            $data = $this->connection->fetchAll($select);
-            $productIds = array_column($data, 'product_id');
-        }
+        $productIds = $this->connection->fetchCol(
+            $this->getIdSelect(intval($condition['eq']))
+        );
         
         $collection->getSelect()->where('e.entity_id IN (?)', $productIds);
+    }
+    
+    /**
+     * 
+     */
+    private function getIdSelect(int $categoryId)
+    {
+        $tableName = $this->resource->getTableName(
+            $this->helperData->getCategoryProductTableName(HelperData::ACTION_FILTER)
+        );
+        
+        // Apply "No Category" filter
+        if ($categoryId == -1) {
+            $entityTableName = $this->resource->getTableName('catalog_product_entity');
+            
+            return $this->connection->select()
+                ->from(['E' => $entityTableName], ['E.entity_id'])
+                ->joinLeft(
+                    ['C' => $tableName],
+                    'E.entity_id = C.product_id',
+                    []
+                )
+                ->where('C.category_id IS NULL');
+        }
+        
+        // Apply standard category filter
+        return $this->connection->select()
+            ->from($tableName, ['product_id'])
+            ->where('category_id = ?', $categoryId);
     }
 }
