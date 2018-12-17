@@ -11,7 +11,7 @@ Add category column and filter in an efficient way to the product grid in the Ma
 ## System requirements
 This extension supports the following versions of Magento:
 
-*	Community Edition (CE) version 2.2.x
+*	Community Edition (CE) version 2.2.x and 2.3.x
 
 ## Installation
 1. Require the module via Composer
