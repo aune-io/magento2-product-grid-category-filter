@@ -1,5 +1,5 @@
 {
-    "name": "aune-io/magento2-product-grid-category-filter",
+    "name": "quazz/magento2-product-grid-category-filter",
     "description": "Product grid category filter for Magento 2",
     "repositories": [
         {
@@ -9,8 +9,8 @@
     ],
     "require": {
         "php": "~7.1.0|~7.2.0",
-        "magento/framework": "102.0.*",
-        "magento/module-catalog": "103.0.*"
+        "magento/framework": ">=102.0.*",
+        "magento/module-catalog": ">=103.0.*"
     },
     "require-dev": {
         "phpunit/phpunit": "~6.5.13",
