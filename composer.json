@@ -8,9 +8,9 @@
         }
     ],
     "require": {
-        "php": "~7.1.0|~7.2.0|~7.3.0",
-        "magento/framework": "102.0.*",
-        "magento/module-catalog": "103.0.*"
+        "php": "~7.1.0|~7.2.0|~7.3.0|~7.4.0",
+        "magento/framework": ">=102.0.0",
+        "magento/module-catalog": ">=103.0.0"
     },
     "require-dev": {
         "phpunit/phpunit": "~6.5.13",
