@@ -13,6 +13,6 @@ class AddCategoriesFieldToCollection implements AddFieldToCollectionInterface
      */
     public function addField(Collection $collection, $field, $alias = null)
     {
-        $collection->setData(ProductCollectionLoadAfter::FLAG_LOAD_CATEGORIES, true);
+        $collection->setFlag(ProductCollectionLoadAfter::FLAG_LOAD_CATEGORIES, true);
     }
 }

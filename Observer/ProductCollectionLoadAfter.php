@@ -48,7 +48,7 @@ class ProductCollectionLoadAfter implements ObserverInterface
     public function execute(Observer $observer)
     {
         $collection = $observer->getCollection();
-        if (!$collection->getData(self::FLAG_LOAD_CATEGORIES)) {
+        if (!$collection->getFlag(self::FLAG_LOAD_CATEGORIES)) {
             return;
         }
 
