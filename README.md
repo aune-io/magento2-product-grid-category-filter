@@ -1,17 +1,20 @@
 # Product grid category filter for Magento 2
 Add category column and filter in an efficient way to the product grid in the Magento 2 admin.
 
-[![Build Status](https://travis-ci.org/aune-io/magento2-product-grid-category-filter.svg?branch=master)](https://travis-ci.org/aune-io/magento2-product-grid-category-filter)
-[![Coverage Status](https://coveralls.io/repos/github/aune-io/magento2-product-grid-category-filter/badge.svg?branch=master)](https://coveralls.io/github/aune-io/magento2-product-grid-category-filter?branch=master)
+[![Tests](https://github.com/aune-io/magento2-product-grid-category-filter/actions/workflows/tests.yml/badge.svg?branch=master)](https://github.com/aune-io/magento2-product-grid-category-filter/actions/workflows/tests.yml)
 [![Latest Stable Version](https://poser.pugx.org/aune-io/magento2-product-grid-category-filter/v/stable)](https://packagist.org/packages/aune-io/magento2-product-grid-category-filter)
 [![Latest Unstable Version](https://poser.pugx.org/aune-io/magento2-product-grid-category-filter/v/unstable)](https://packagist.org/packages/aune-io/magento2-product-grid-category-filter)
 [![Total Downloads](https://poser.pugx.org/aune-io/magento2-product-grid-category-filter/downloads)](https://packagist.org/packages/aune-io/magento2-product-grid-category-filter)
 [![License](https://poser.pugx.org/aune-io/magento2-product-grid-category-filter/license)](https://packagist.org/packages/aune-io/magento2-product-grid-category-filter)
 
 ## System requirements
-This extension supports the following versions of Magento:
+This extension supports the following versions:
 
-*	Community Edition (CE) version 2.2.x and 2.3.x
+*	Magento Open Source / Adobe Commerce 2.4.6, 2.4.7, 2.4.8 and 2.4.9
+*	PHP 8.2, 8.3, 8.4 and 8.5 (as far as each Magento release supports them)
+
+Older Magento (2.2, 2.3, 2.4.0 - 2.4.5) and PHP (7.x, 8.0, 8.1) versions are no longer supported.
+The last release supporting them is the one tagged before this change; use that if you are still on those versions.
 
 ## Installation
 1. Require the module via Composer
