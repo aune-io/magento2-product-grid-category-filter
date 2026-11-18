@@ -3,7 +3,7 @@
     <type name="Magento\Catalog\Ui\DataProvider\Product\ProductDataProvider">
         <arguments>
             <argument name="addFieldStrategies" xsi:type="array">
-                <item name="categories" xsi:type="object">Aune\ProductGridCategoryFilter\Ui\DataProvider\Product\AddCategoriesFieldToCollection</item>
+                <item name="category_id" xsi:type="object">Aune\ProductGridCategoryFilter\Ui\DataProvider\Product\AddCategoriesFieldToCollection</item>
             </argument>
             <argument name="addFilterStrategies" xsi:type="array">
                 <item name="category_id" xsi:type="object">Aune\ProductGridCategoryFilter\Ui\DataProvider\Product\AddCategoryFilterToCollection</item>
